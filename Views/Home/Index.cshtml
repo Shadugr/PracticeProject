@@ -2,7 +2,128 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<!-- Search Form-->
+<div class="row justify-content-center">
+
+    <div class="col-11">
+        <form class="border border-primary rounded">
+
+            <div class="row p-3">
+
+                <div class="col-2">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-primary active">
+                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Flat
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="option2" autocomplete="off"> Land
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="m-1" for="inputLocation">Location</label>
+                        <input type="text" class="form-control m-1" id="inputLocation" placeholder="Property location...">
+                    </div>
+
+                </div>
+
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="m-1">Price</label>
+                        <input type="text" class="form-control m-1" id="lowPrice" placeholder="from...">
+                        <input type="text" class="form-control m-1" id="upPrice" placeholder="to...">
+                    </div>
+
+
+                </div>
+
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="m-1">Area</label>
+                        <input type="text" class="form-control m-1" id="lowArea" placeholder="from...">
+                        <input type="text" class="form-control m-1" id="upArea" placeholder="to...">
+                    </div>
+                </div>
+
+                <div class="col-1 align-self-end p-1">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
+<!-- End -->
+
+<div class="row text-center mb-2">
+    <div class="col-lg-7 mx-auto">
+        <h1>Product List</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-11 mx-auto">
+        <!-- List group-->
+        <ul class="list-group">
+            <!-- list group item-->
+            <li class="list-group-item border-primary">
+                <!-- Custom content-->
+                <div class="row flex-lg-row p-3">
+                    <div class="col-md-auto">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHW3aOemXDA_ZS9PsVxRXomGYw70-c4UocJyC1EO5wXw&ss" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                    </div>
+                    <div class="col">
+                        <div class="media-body order-2 order-lg-1">
+                            <a class="mt-0 mb-2">Here is our title</a>
+                            <p class="font-italic text-muted mb-0 small">Here is our description</p>
+                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                <h6 class="font-weight-bold my-2">$64,999</h6>
+                            </div>
+                        </div>
+                    </div> <!-- End -->
+                </div>
+            </li> <!-- End -->
+            <!-- list group item-->
+            <li class="list-group-item border-primary">
+                <!-- Custom content-->
+                <div class="row flex-lg-row p-3">
+                    <div class="col-md-auto">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHW3aOemXDA_ZS9PsVxRXomGYw70-c4UocJyC1EO5wXw&ss" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                    </div>
+                    <div class="col">
+                        <div class="media-body order-2 order-lg-1">
+                            <a class="mt-0 mb-2">Here is our title</a>
+                            <p class="font-italic text-muted mb-0 small">Here is our description</p>
+                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                <h6 class="font-weight-bold my-2">$64,999</h6>
+                            </div>
+                        </div>
+                    </div> <!-- End -->
+                </div>
+            </li> <!-- End -->
+
+
+
+        </ul> <!-- End -->
+    </div>
+
+</div>
+
+
+<!-- Pagination -->
+<div class="row justify-content-center py-3">
+    <div class="col-md-auto">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- End -->
