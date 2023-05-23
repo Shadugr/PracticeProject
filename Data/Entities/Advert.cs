@@ -5,9 +5,9 @@ namespace PracticeProject.Data.Entities
 {
     public class Advert
     {
-        public int user_id { get; set; }
+        public string UserId { get; set; }
         [Key]
-        public int advert_id { get; set; }
+        public int Id { get; set; }
 
         [StringLength(20)]
         public string path_to_property { get; set; }

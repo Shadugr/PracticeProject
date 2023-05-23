@@ -1,0 +1,17 @@
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace PracticeProject.Controllers
+{
+    public class UserController : Controller
+    {
+        public IActionResult UserProfile()
+        {
+            return View();
+        }
+
+        public IActionResult ProfileSettings()
+        {
+            return View();
+        }
+    }
+}
