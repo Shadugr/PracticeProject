@@ -1,9 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using PracticeProject.Data;
+using PracticeProject.Data.Entities;
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("PracticeProjectDbContextConnection") ?? throw new InvalidOperationException("Connection string 'PracticeProjectDbContextConnection' not found.");
 
-builder.Services.AddDbContext<PracticeProjectDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<ProjectDbContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<PracticeProjectUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<PracticeProjectDbContext>();
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ProjectDbContext>();
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -33,7 +39,7 @@ app.MapControllerRoute(
 //For Identity
 app.MapRazorPages();
 
-ProjectDbContext projectDbContext = new ProjectDbContext();
-projectDbContext.Identity();
+//ProjectDbContext projectDbContext = new ProjectDbContext();
+//projectDbContext.Identity();
 
 app.Run();

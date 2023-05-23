@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PracticeProject.Data.Entities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,14 +8,15 @@ using System.Runtime.Intrinsics.X86;
 
 namespace PracticeProject.Data
 {
-    public class ProjectDbContext : DbContext
+    
+    public class ProjectDbContext : IdentityDbContext<User>
     {
-        public DbSet<User> Users { get; set; }
         public DbSet<Advert> Adverts { get; set; }
         public DbSet<Flat> Flats { get; set; }
         public DbSet<Land> Lands { get; set; }
         public DbSet<Photo> Photos { get; set; }
-        public ProjectDbContext() => Database.EnsureCreated();
+        //public ProjectDbContext() => Database.EnsureCreated();
+        public ProjectDbContext(DbContextOptions options) : base(options) { } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,12 +25,12 @@ namespace PracticeProject.Data
             modelBuilder.Entity<Advert>()
                 .HasOne(a => a.User)
                 .WithMany(u => u.Adverts)
-                .HasForeignKey(a => a.user_id);
+                .HasForeignKey(a => a.UserId);
 
             modelBuilder.Entity<Flat>()
                 .HasOne(f => f.Advert)
                 .WithOne(a => a.Flat)
-                .HasForeignKey<Flat>(f => f.advert_id);
+                .HasForeignKey<Flat>(f => f.AdvertId);
 
             modelBuilder.Entity<Land>()
                 .HasOne(l => l.Advert)
@@ -42,25 +44,25 @@ namespace PracticeProject.Data
 
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString = "Server=localhost;Database=TestDB;Trusted_Connection=True;Encrypt=false;";
             optionsBuilder.UseSqlServer(connectionString);
-        }
+        }*/
 
-        public void Identity()
+        /*public void Identity()
         {
             using (ProjectDbContext db = new ProjectDbContext())
             {
                 db.Database.EnsureDeleted();
                 db.Database.EnsureCreated();
-
+                
                 User user1 = new User
                 {
                     name = "test",
                     surname = "user1",
-                    phone = "380123456789",
-                    email = "user1@gmail.com",
+                    PhoneNumber = "380123456789",
+                    Email = "user1@gmail.com",
                     is_active = true,
                     created_at = DateTime.Now
                 };
@@ -69,8 +71,8 @@ namespace PracticeProject.Data
                 {
                     name = "test",
                     surname = "user2",
-                    phone = "380987654321",
-                    email = "user2@gmail.com",
+                    PhoneNumber = "380987654321",
+                    Email = "user2@gmail.com",
                     is_active = true,
                     created_at = DateTime.Now
                 };
@@ -151,7 +153,8 @@ namespace PracticeProject.Data
                 db.Photos.AddRange(photo1, photo2, photo3);
 
                 db.SaveChanges();
+                
             }
-        }
+        }*/
     }
 }

@@ -2,57 +2,110 @@
     ViewData["Title"] = "Home Page";
 }
 
-
-<!-- Search Form-->
+<!-- Search Forms for two types of property-->
 <div class="row justify-content-center">
-
     <div class="col-11">
-        <form class="border border-primary rounded">
-
-            <div class="row p-3">
-
-                <div class="col-2">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-outline-primary active">
-                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Flat
-                        </label>
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option2" autocomplete="off"> Land
-                        </label>
-                    </div>
-                </div>
-
-                <div class="col-3">
-                    <div class="form-group">
-                        <label class="m-1" for="inputLocation">Location</label>
-                        <input type="text" class="form-control m-1" id="inputLocation" placeholder="Property location...">
-                    </div>
-
-                </div>
-
-                <div class="col-3">
-                    <div class="form-group">
-                        <label class="m-1">Price</label>
-                        <input type="text" class="form-control m-1" id="lowPrice" placeholder="from...">
-                        <input type="text" class="form-control m-1" id="upPrice" placeholder="to...">
-                    </div>
-
-
-                </div>
-
-                <div class="col-3">
-                    <div class="form-group">
-                        <label class="m-1">Area</label>
-                        <input type="text" class="form-control m-1" id="lowArea" placeholder="from...">
-                        <input type="text" class="form-control m-1" id="upArea" placeholder="to...">
-                    </div>
-                </div>
-
-                <div class="col-1 align-self-end p-1">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </div>
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Flat</button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Land</button>
             </div>
-        </form>
+        </nav>
+        <div class="tab-content border border-top-0" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <!-- Flat Search Form-->
+                <form>
+                    <div class="row justify-content-center p-3">
+                        <div class="col-9">
+                            <input type="text" class="form-control" id="inputDescriptiom" placeholder="Type what are you looking for...">
+                        </div>
+                        <div class="col-2">
+                            <a href="" class="btn btn-primary" role="button">Search</a>
+                        </div>
+                    </div>
+                    <div class="row p-3">
+                        <div class="form-group">
+                            <label for="inputLocation">Location</label>
+                            <input type="text" class="form-control" id="inputLocation" placeholder="Property location...">
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input type="text" class="form-control" id="lowPrice" placeholder="from...">
+                                <input type="text" class="form-control" id="upPrice" placeholder="to...">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>Square</label>
+                                <input type="text" class="form-control" id="lowSquare" placeholder="from...">
+                                <input type="text" class="form-control" id="upSquare" placeholder="to...">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label class="">Floor</label>
+                                <input type="text" class="form-control" id="lowFloor" placeholder="from...">
+                                <input type="text" class="form-control" id="upFloor" placeholder="to...">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- End-->
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <!-- Land Search Form-->
+                <form>
+                    <div class="row justify-content-center p-3">
+                        <div class="col-9">
+                            <input type="text" class="form-control" id="inputDescriptiom" placeholder="Type what are you looking for...">
+                        </div>
+                        <div class="col-2">
+                            <!--button type="submit" class="btn btn-primary">Search</button>-->
+                            <a href="" class="btn btn-primary" role="button">Search</a>
+                        </div>
+                    </div>
+                    <div class="row p-3">
+                        <div class="form-group">
+                            <label for="inputLocation">Location</label>
+                            <input type="text" class="form-control" id="inputLocation" placeholder="Property location...">
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input type="text" class="form-control" id="lowPrice" placeholder="from...">
+                                <input type="text" class="form-control" id="upPrice" placeholder="to...">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>Area</label>
+                                <input type="text" class="form-control" id="lowArea" placeholder="from...">
+                                <input type="text" class="form-control" id="upArea" placeholder="to...">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>Type of land</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option value="0" selected>01.03</option>
+                                    <option value="1">01.05</option>
+                                    <option value="2">02.01</option>
+                                    <option value="3">03.10</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- End-->
+            
+            </div>
+            
+        </div>
+
+
     </div>
 </div>
 <!-- End -->
@@ -68,7 +121,7 @@
         <!-- List group-->
         <ul class="list-group">
             <!-- list group item-->
-            <li class="list-group-item border-primary">
+            <li class="list-group-item border">
                 <!-- Custom content-->
                 <div class="row flex-lg-row p-3">
                     <div class="col-md-auto">
@@ -76,7 +129,7 @@
                     </div>
                     <div class="col">
                         <div class="media-body order-2 order-lg-1">
-                            <a class="mt-0 mb-2">Here is our title</a>
+                            <a class="mt-0 mb-2" href="/Home/FlatView">Here is our title FlatView</a>
                             <p class="font-italic text-muted mb-0 small">Here is our description</p>
                             <div class="d-flex align-items-center justify-content-between mt-1">
                                 <h6 class="font-weight-bold my-2">$64,999</h6>
@@ -85,27 +138,7 @@
                     </div> <!-- End -->
                 </div>
             </li> <!-- End -->
-            <!-- list group item-->
-            <li class="list-group-item border-primary">
-                <!-- Custom content-->
-                <div class="row flex-lg-row p-3">
-                    <div class="col-md-auto">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHW3aOemXDA_ZS9PsVxRXomGYw70-c4UocJyC1EO5wXw&ss" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                    </div>
-                    <div class="col">
-                        <div class="media-body order-2 order-lg-1">
-                            <a class="mt-0 mb-2">Here is our title</a>
-                            <p class="font-italic text-muted mb-0 small">Here is our description</p>
-                            <div class="d-flex align-items-center justify-content-between mt-1">
-                                <h6 class="font-weight-bold my-2">$64,999</h6>
-                            </div>
-                        </div>
-                    </div> <!-- End -->
-                </div>
-            </li> <!-- End -->
-
-
-
+          
         </ul> <!-- End -->
     </div>
 

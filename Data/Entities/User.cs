@@ -1,21 +1,15 @@
-﻿using PracticeProject.Data;
+﻿using Microsoft.AspNetCore.Identity;
+using PracticeProject.Data;
 using System.ComponentModel.DataAnnotations;
 
 namespace PracticeProject.Data.Entities
 {
-    public class User
+    public class User:IdentityUser
     {
-        [Key]
-        public int user_id { get; set; }
         [Required]
         public string name { get; set; }
         [Required]
         public string surname { get; set; }
-
-        [Required, StringLength(12)]
-        public string phone { get; set; }
-        [Required]
-        public string email { get; set; }
 
         public bool is_active { get; set; }
 

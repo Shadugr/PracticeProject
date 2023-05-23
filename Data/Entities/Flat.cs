@@ -6,7 +6,7 @@ namespace PracticeProject.Data.Entities
     {
         [Key]
         public int flat_id { get; set; }
-        public int advert_id { get; set; }
+        public int AdvertId { get; set; }
 
         public int floor { get; set; }
         public int storey { get; set; }

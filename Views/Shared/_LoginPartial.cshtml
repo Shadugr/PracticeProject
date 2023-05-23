@@ -1,8 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using PracticeProject.Areas.Identity.Data
+@using PracticeProject.Data.Entities;
 
-@inject SignInManager<PracticeProjectUser> SignInManager
-@inject UserManager<PracticeProjectUser> UserManager
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
