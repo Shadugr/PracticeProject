@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using PracticeProject.Areas.Identity.Data;
-using PracticeProject.Data;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("PracticeProjectDbContextConnection") ?? throw new InvalidOperationException("Connection string 'PracticeProjectDbContextConnection' not found.");
 
@@ -36,5 +32,8 @@ app.MapControllerRoute(
 
 //For Identity
 app.MapRazorPages();
+
+ProjectDbContext projectDbContext = new ProjectDbContext();
+projectDbContext.Identity();
 
 app.Run();
