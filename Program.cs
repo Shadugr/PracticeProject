@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PracticeProject.Data;
 using PracticeProject.Data.Entities;
+using static System.Formats.Asn1.AsnWriter;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("PracticeProjectDbContextConnection") ?? throw new InvalidOperationException("Connection string 'PracticeProjectDbContextConnection' not found.");

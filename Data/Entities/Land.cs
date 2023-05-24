@@ -5,12 +5,12 @@ namespace PracticeProject.Data.Entities
     public class Land
     {
         [Key]
-        public int land_id { get; set; }
-        public int advert_id { get; set; }
+        public int Id { get; set; }
+        public int AdvertId { get; set; }
 
-        public string type_of_land { get; set; }
-        public int area { get; set; }
-        public short area_dimension { get; set; }
+        public string? TypeOfLand { get; set; }
+        public int Area { get; set; }
+        public short AreaDimension { get; set; }
 
 
         public Advert? Advert { get; set; }
