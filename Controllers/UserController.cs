@@ -13,5 +13,15 @@ namespace PracticeProject.Controllers
         {
             return View();
         }
+
+        public IActionResult FlatCreate()
+        {
+            return View();
+        }
+        
+        public IActionResult LandCreate()
+        {
+            return View();
+        }
     }
 }

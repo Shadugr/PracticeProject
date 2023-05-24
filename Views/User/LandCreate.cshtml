@@ -4,6 +4,7 @@
 @{
 }
 
+
 <div class="row justify-content-center">
     <div class="col-6">
         <form>
@@ -33,29 +34,33 @@
 
                 <div class="col-4">
                     <div class="form-group">
-                        <label for="inputFloor">Floor</label>
-                        <input type="text" class="form-control" id="inputFloor" placeholder="Floor">
+                        <label>Type of land</label>
+                        <select class="form-select" id="typeOfLand">
+                            <option value="0" selected>01.03</option>
+                            <option value="1">01.05</option>
+                            <option value="2">02.01</option>
+                            <option value="3">03.10</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        <label for="inputStorey">Storey</label>
-                        <input type="text" class="form-control" id="inputStorey" placeholder="Storey">
+                        <label for="inputArea">Area</label>
+                        <input type="text" class="form-control" id="inputArea" placeholder="Area">
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        <label for="inputSquare">Square</label>
-                        <input type="text" class="form-control" id="inputSquare" placeholder="Square">
+                        <label>Dimention</label>
+                        <select class="form-select" id="areaDimention">
+                            <option value="0" selected>sq.m</option>
+                            <option value="1">sq.ft</option>
+                            <option value="2">ha</option>
+                        </select>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="inputBuildAge">Building age</label>
-                        <input type="text" class="form-control" id="inputBuildAge" placeholder="Building age">
-                    </div>
-                </div>
-                <div class="col-6">
+                
+                <div class="col-12">
                     <div class="form-group">
                         <label for="inputPrice">Price</label>
                         <input type="text" class="form-control" id="inputPrice" placeholder="Price">
@@ -70,7 +75,7 @@
                 </div>
 
                 <div class="col-12 mt-2 form-group">
-                    <button type="submit" class="btn btn-primary">Create Flat</button>
+                    <button type="submit" class="btn btn-primary">Create Land</button>
                 </div>
             </div>
 
