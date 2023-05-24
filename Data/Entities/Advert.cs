@@ -1,33 +1,34 @@
 ﻿using PracticeProject.Data;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PracticeProject.Data.Entities
 {
     public class Advert
     {
-        public string UserId { get; set; }
-        [Key]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public string UserId { get; set; }
 
         [StringLength(20)]
-        public string path_to_property { get; set; }
+        public string? PathToProperty { get; set; }
 
-        public string title { get; set; }
+        public string Title { get; set; }
         [StringLength(40)]
-        public string location { get; set; }
+        public string Location { get; set; }
         [StringLength(500)]
-        public string description { get; set; }
-        public int price { get; set; }
+        public string Description { get; set; }
+        public int Price { get; set; }
 
-        public int view_number { get; set; }
-        public bool is_active { get; set; } = true;
+        public int ViewNumber { get; set; }
+        public bool IsActive { get; set; } = true;
 
-        public DateTime created_at { get; set; }
+        public DateTime CreatedAt { get; set; }
 
 
-        public User? User { get; set; }
-        public Flat? Flat { get; set; }
-        public Land? Land { get; set; }
+        public User User { get; set; }
+        public Flat Flat { get; set; }
+        public Land Land { get; set; }
         public ICollection<Photo> Photos { get; set; }
     }
 }

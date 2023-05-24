@@ -7,15 +7,15 @@ namespace PracticeProject.Data.Entities
     public class User:IdentityUser
     {
         [Required]
-        public string name { get; set; }
+        public string? Name { get; set; }
         [Required]
-        public string surname { get; set; }
+        public string? Surname { get; set; }
 
-        public bool is_active { get; set; }
+        public bool IsActive { get; set; }
 
-        public DateTime created_at { get; set; }
+        public DateTime CreatedAt { get; set; }
 
 
-        public ICollection<Advert> Adverts { get; set; }
+        public ICollection<Advert>? Adverts { get; set; }
     }
 }
