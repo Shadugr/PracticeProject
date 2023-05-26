@@ -16,7 +16,6 @@ namespace PracticeProject.Data
         public DbSet<Flat> Flats { get; set; }
         public DbSet<Land> Lands { get; set; }
         public DbSet<Photo> Photos { get; set; }
-        public ProjectDbContext() { }
         public ProjectDbContext(DbContextOptions options) : base(options) { } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

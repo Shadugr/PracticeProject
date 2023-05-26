@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PracticeProject.Data;
 
@@ -11,9 +12,11 @@ using PracticeProject.Data;
 namespace PracticeProject.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    partial class ProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230525111305_Seed")]
+    partial class Seed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,7 +214,7 @@ namespace PracticeProject.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 26, 17, 4, 19, 715, DateTimeKind.Local).AddTicks(1839),
+                            CreatedAt = new DateTime(2023, 5, 25, 14, 13, 5, 146, DateTimeKind.Local).AddTicks(4482),
                             Description = "description1",
                             IsActive = true,
                             Location = "location1",
@@ -224,7 +227,7 @@ namespace PracticeProject.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 26, 17, 4, 19, 715, DateTimeKind.Local).AddTicks(1849),
+                            CreatedAt = new DateTime(2023, 5, 25, 14, 13, 5, 146, DateTimeKind.Local).AddTicks(4490),
                             Description = "description2",
                             IsActive = true,
                             Location = "location2",
@@ -237,7 +240,7 @@ namespace PracticeProject.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 5, 26, 17, 4, 19, 715, DateTimeKind.Local).AddTicks(1857),
+                            CreatedAt = new DateTime(2023, 5, 25, 14, 13, 5, 146, DateTimeKind.Local).AddTicks(4498),
                             Description = "description3",
                             IsActive = true,
                             Location = "location3",
@@ -462,8 +465,8 @@ namespace PracticeProject.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2a483479-22d2-4b11-914f-7bf2f2af2873",
-                            CreatedAt = new DateTime(2023, 5, 26, 17, 4, 19, 715, DateTimeKind.Local).AddTicks(1728),
+                            ConcurrencyStamp = "b7c0c019-14e9-402a-8609-815adea2b7b4",
+                            CreatedAt = new DateTime(2023, 5, 25, 14, 13, 5, 146, DateTimeKind.Local).AddTicks(4354),
                             Email = "user1@gmail.com",
                             EmailConfirmed = false,
                             IsActive = true,
@@ -471,7 +474,7 @@ namespace PracticeProject.Migrations
                             Name = "test",
                             PhoneNumber = "380123456789",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8ebdece3-9b20-47e7-87b8-418d1200fef4",
+                            SecurityStamp = "6811f978-16d0-42cb-93ce-cfceaa76d5b9",
                             Surname = "user1",
                             TwoFactorEnabled = false
                         },
@@ -479,8 +482,8 @@ namespace PracticeProject.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6baa5a26-c53a-4e75-8cb3-cb364f6bfa72",
-                            CreatedAt = new DateTime(2023, 5, 26, 17, 4, 19, 715, DateTimeKind.Local).AddTicks(1818),
+                            ConcurrencyStamp = "f36f1abc-6540-44f1-9353-c6da06206c78",
+                            CreatedAt = new DateTime(2023, 5, 25, 14, 13, 5, 146, DateTimeKind.Local).AddTicks(4467),
                             Email = "user2@gmail.com",
                             EmailConfirmed = false,
                             IsActive = true,
@@ -488,7 +491,7 @@ namespace PracticeProject.Migrations
                             Name = "test",
                             PhoneNumber = "380987654321",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c96e8b5b-ecfe-4cc0-b115-407e574e2fc8",
+                            SecurityStamp = "138b41a5-7f33-4336-8514-31296efe4b57",
                             Surname = "user2",
                             TwoFactorEnabled = false
                         });
@@ -591,9 +594,11 @@ namespace PracticeProject.Migrations
 
             modelBuilder.Entity("PracticeProject.Data.Entities.Advert", b =>
                 {
-                    b.Navigation("Flat");
+                    b.Navigation("Flat")
+                        .IsRequired();
 
-                    b.Navigation("Land");
+                    b.Navigation("Land")
+                        .IsRequired();
 
                     b.Navigation("Photos");
                 });

@@ -1,6 +1,6 @@
-﻿@*
-*@
+﻿@model PracticeProject.Data.Entities.Advert;
 @{
+    ViewData["Title"] = Model.Title;
 }
 
 <div class="row justify-content-center">
@@ -45,33 +45,45 @@
 
                     <div class="row">
                         <div class="col-8">
-                            <h4>flat title</h4>
+                            <h4>@Model.Title</h4>
                         </div>
                         <div class="col-4">
-                            <h2>Price</h2>
+                            <h2>$@Model.Price</h2>
                         </div>
                     </div>
                  
-                    <h6>Floor/Storey</h6>
-                    <h6>Square</h6>
-                    <h6>Building Age</h6>
-
-                    <h5>flat description</h5>
-
+                    @if (Model.Flat == null)
+                    {
+                        <h6>Area: @Model.Land.Area @Model.Land.TypeOfLand</h6>
+                    }
+                    else
+                    {
+                        <h6>Floor: @Model.Flat.Floor/@Model.Flat.Storey</h6>
+                        <h6>Square: @Model.Flat.Square</h6>
+                        <h6>Building age in years: @Model.Flat.BuildingAge</h6>
+                    }
+                    <h5>@Model.Description</h5>
                 </div>
 
                 <div class="col-5">
                     <h2>Seller information</h2>
-                    <h3>Name Surname</h3>
-                    <h4>Phone number</h4>
-                    <h4>Is Online</h4>
-                    <a>See all seller property</a>
+                    <h3>Name: @Model.User.Name @Model.User.Surname</h3>
+                    <h4>Phone number: @Model.User.PhoneNumber</h4>
+                    @if (Model.User.IsActive)
+                    {
+                        <h4>Online</h4>
+                    }
+                    else
+                    {
+                        <h4>Offline</h4>
+                    }
+                    <a asp-controller="User" asp-action="UserProfile" asp-route-id="@Model.UserId">
+                        See seller profile
+                    </a>
                 </div>
 
-
                 <div class="col">
-                    <h6>Created at dd/mm/yyyy | 106 Views</h6>
-                    <a href="/User/UserProfile">See user profile</a>
+                    <h6>Created at @Model.CreatedAt.ToString("dd/MM/yyyy") | @Model.ViewNumber Views</h6>
                 </div>
         </div>
         <!-- End Flat Description -->

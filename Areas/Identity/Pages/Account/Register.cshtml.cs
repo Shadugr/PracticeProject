@@ -27,6 +27,7 @@ namespace PracticeProject.Areas.Identity.Pages.Account
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly IUserStore<User> _userStore;
+        private readonly IUserPhoneNumberStore<User> _phoneStore;
         private readonly IUserEmailStore<User> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
@@ -80,6 +81,20 @@ namespace PracticeProject.Areas.Identity.Pages.Account
             [Display(Name = "Email")]
             public string Email { get; set; }
 
+            [Required]
+            [StringLength(100)]
+            [Display(Name = "Name")]
+            public string Name { get; set; }
+
+            [Required]
+            [StringLength(100)]
+            [Display(Name = "Surname")]
+            public string Surname { get; set; }
+
+            [Required]
+            [Display(Name = "PhoneNumber")]
+            public string PhoneNumber { get; set; }
+
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -115,6 +130,11 @@ namespace PracticeProject.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
+                user.Name = Input.Name;
+                user.Surname = Input.Surname;
+                user.CreatedAt = DateTime.Now;
+                user.IsActive = false;
+                user.PhoneNumber = Input.PhoneNumber;
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);

@@ -1,32 +1,32 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿    @model PracticeProject.Data.Entities.User;
 @{
+    ViewData["Title"] = $"{Model.Name} {Model.Surname}";
 }
+
 <div class="row justify-content-center">
     <div class="col-6">
-        <form>
+        <form asp-action="ProfileSettings" method="post">
+            <input type="hidden" asp-for="Id" value="@Model.Id" />
             <div class="form-group">
-                <label for="inputName">Name</label>
-                <input type="text" class="form-control" id="inputName" placeholder="Name">
+                <label asp-for="Name">Name</label>
+                <input required type="text" class="form-control" asp-for="Name" placeholder="@Model.Name">
             </div>
             <div class="form-group">
-                <label for="inputSurname">Surname</label>
-                <input type="text" class="form-control" id="inputSurname" placeholder="Surname">
+                <label asp-for="Surname">Surname</label>
+                <input required type="text" class="form-control" asp-for="Surname" placeholder="@Model.Surname">
             </div>
             <div class="form-group">
-                <label for="inputEmail">Email</label>
-                <input type="email" readonly class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                <label asp-for="Email">Email</label>
+                <input type="email" readonly class="form-control" asp-for="Email" aria-describedby="emailHelp" placeholder="@Model.Email">
                 <small id="emailHelp" class="form-text text-muted">This field is unique and can't be changed'.</small>
             </div>
             <div class="form-group">
-                <label for="inputPhone">Phone</label>
-                <input type="text" class="form-control" id="inputPhone" placeholder="Phone">
+                <label asp-for="PhoneNumber">Phone</label>
+                <input required type="text" class="form-control" asp-for="PhoneNumber" placeholder="@Model.PhoneNumber">
             </div>
 
-            <button type="submit" class="btn btn-danger">Delete Account</button>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-
+        <a asp-action="Delete" class="btn btn-danger">Delete Account</a>
     </div>
 </div>

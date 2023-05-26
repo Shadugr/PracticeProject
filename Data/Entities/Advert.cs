@@ -27,8 +27,8 @@ namespace PracticeProject.Data.Entities
 
 
         public User User { get; set; }
-        public Flat Flat { get; set; }
-        public Land Land { get; set; }
+        public Flat? Flat { get; set; }
+        public Land? Land { get; set; }
         public ICollection<Photo> Photos { get; set; }
     }
 }

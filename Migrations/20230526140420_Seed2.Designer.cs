@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PracticeProject.Data;
 
@@ -11,9 +12,11 @@ using PracticeProject.Data;
 namespace PracticeProject.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    partial class ProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230526140420_Seed2")]
+    partial class Seed2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
