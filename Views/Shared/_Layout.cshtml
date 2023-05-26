@@ -27,15 +27,30 @@
                         </li>
                     </ul>
 
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Identity/Account/Login">Login</a>
-                        </li>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Identity/Account/Login">Login</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Identity/Account/Register">Register</a>
-                        </li>
-                    </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Identity/Account/Register">Register</a>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="User" asp-action="Profile">@User.Identity.Name</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="User" asp-action="Logout">Logout</a>
+                            </li>
+                        </ul>
+                    }
                 </div>
             </div>
         </nav>

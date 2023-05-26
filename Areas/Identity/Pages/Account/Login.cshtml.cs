@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using PracticeProject.Data.Entities;
+using PracticeProject.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace PracticeProject.Areas.Identity.Pages.Account
 {
@@ -22,11 +24,13 @@ namespace PracticeProject.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly ProjectDbContext _context;
 
-        public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger, ProjectDbContext context)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _context = context;
         }
 
         /// <summary>
@@ -104,7 +108,8 @@ namespace PracticeProject.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/");
+            var u = _context.Users.Where(user => user.Email == Input.Email).First();
+            returnUrl ??= Url.Content($"~/User/UserProfile/{u.Id}");
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
@@ -115,6 +120,8 @@ namespace PracticeProject.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    _context.Users.Where(user => user.Email == Input.Email).First().IsActive = true;
+                    await _context.SaveChangesAsync();
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
