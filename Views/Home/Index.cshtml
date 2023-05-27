@@ -1,7 +1,6 @@
 ﻿@model List<PracticeProject.Data.Entities.Advert>;
 @{
     ViewData["Title"] = "Home Page";
-    double pageCount = Math.Ceiling((double)(Model.Count / 5.0));
 }
 
 <!-- Search Forms for two types of property-->
@@ -16,40 +15,41 @@
         <div class="tab-content border border-top-0" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <!-- Flat Search Form-->
-                <form>
+                <form asp-action="Index" method="post">
+                    <input type="hidden" name="searchType" value="Flat" />
                     <div class="row justify-content-center p-3">
                         <div class="col-9">
-                            <input type="text" class="form-control" id="inputDescriptiom" placeholder="Type what are you looking for...">
+                            <input type="text" class="form-control" name="inputDescription" placeholder="Type what are you looking for...">
                         </div>
                         <div class="col-2">
-                            <a href="" class="btn btn-primary" role="button">Search</a>
+                            <input type="submit" class="btn btn-primary" role="button" value="Search">
                         </div>
                     </div>
                     <div class="row p-3">
                         <div class="form-group">
                             <label for="inputLocation">Location</label>
-                            <input type="text" class="form-control" id="inputLocation" placeholder="Property location...">
+                            <input type="text" class="form-control" name="inputLocation" placeholder="Property location...">
                         </div>
                         <div class="w-100"></div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label>Price</label>
-                                <input type="text" class="form-control" id="lowPrice" placeholder="from...">
-                                <input type="text" class="form-control" id="upPrice" placeholder="to...">
+                                <input type="text" pattern="[0-9]+" class="form-control" name="lowPrice" placeholder="from...">
+                                <input type="text" pattern="[0-9]+" class="form-control" name="upPrice" placeholder="to...">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label>Square</label>
-                                <input type="text" class="form-control" id="lowSquare" placeholder="from...">
-                                <input type="text" class="form-control" id="upSquare" placeholder="to...">
+                                <input type="text" pattern="[0-9]+" class="form-control" name="lowSquare" placeholder="from...">
+                                <input type="text" pattern="[0-9]+" class="form-control" name="upSquare" placeholder="to...">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label class="">Floor</label>
-                                <input type="text" class="form-control" id="lowFloor" placeholder="from...">
-                                <input type="text" class="form-control" id="upFloor" placeholder="to...">
+                                <input type="text" pattern="[0-9]+" class="form-control" name="lowFloor" placeholder="from...">
+                                <input type="text" pattern="[0-9]+" class="form-control" name="upFloor" placeholder="to...">
                             </div>
                         </div>
                     </div>
@@ -58,40 +58,50 @@
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <!-- Land Search Form-->
-                <form>
+                <form asp-action="Index" method="post">
+                    <input type="hidden" name="searchType" value="Land" />
                     <div class="row justify-content-center p-3">
                         <div class="col-9">
-                            <input type="text" class="form-control" id="inputDescriptiom" placeholder="Type what are you looking for...">
+                            <input type="text" class="form-control" name="inputDescriptiom" placeholder="Type what are you looking for...">
                         </div>
                         <div class="col-2">
-                            <!--button type="submit" class="btn btn-primary">Search</button>-->
-                            <a href="" class="btn btn-primary" role="button">Search</a>
+                            <input type="submit" class="btn btn-primary" role="button" value="Search">
                         </div>
                     </div>
                     <div class="row p-3">
                         <div class="form-group">
                             <label for="inputLocation">Location</label>
-                            <input type="text" class="form-control" id="inputLocation" placeholder="Property location...">
+                            <input type="text" class="form-control" name="inputLocation" placeholder="Property location...">
                         </div>
                         <div class="w-100"></div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="form-group">
                                 <label>Price</label>
-                                <input type="text" class="form-control" id="lowPrice" placeholder="from...">
-                                <input type="text" class="form-control" id="upPrice" placeholder="to...">
+                                <input type="text" pattern="[0-9]+" class="form-control" name="lowPrice" placeholder="from...">
+                                <input type="text" pattern="[0-9]+" class="form-control" name="upPrice" placeholder="to...">
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="form-group">
                                 <label>Area</label>
-                                <input type="text" class="form-control" id="lowArea" placeholder="from...">
-                                <input type="text" class="form-control" id="upArea" placeholder="to...">
+                                <input type="text" pattern="[0-9]+" class="form-control" name="lowArea" placeholder="from...">
+                                <input type="text" pattern="[0-9]+" class="form-control" name="upArea" placeholder="to...">
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>Dimension</label>
+                                <select class="form-select" name="areaDimension">
+                                    <option value="0" selected>sq.m</option>
+                                    <option value="1">sq.ft</option>
+                                    <option value="2">ha</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
                             <div class="form-group">
                                 <label>Type of land</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" name="typeOfLand" aria-label="Default select example">
                                     <option value="0" selected>01.03</option>
                                     <option value="1">01.05</option>
                                     <option value="2">02.01</option>
@@ -129,7 +139,7 @@
                     <!-- Custom content-->
                     <div class="row flex-lg-row p-3">
                         <div class="col-md-auto">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHW3aOemXDA_ZS9PsVxRXomGYw70-c4UocJyC1EO5wXw&ss" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                            <img src="~/@advert.Photos.First().PathToFile" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                         </div>
                         <div class="col">
                             <div class="media-body order-2 order-lg-1">
@@ -155,10 +165,10 @@
     <div class="col-md-auto">
         <nav>
             <ul class="pagination">
-                @for (int i = 1; i <= pageCount; i++)
+                @for (int i = 1; i <= Math.Ceiling(Model.Count / 5.0); i++)
                 {
                     <li class="page-item">
-                        <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                        <a class="page-link" asp-action="Index"  asp-route-page="@i">@i</a>
                     </li>
                 }
             </ul>

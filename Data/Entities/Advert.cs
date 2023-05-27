@@ -10,9 +10,6 @@ namespace PracticeProject.Data.Entities
         public int Id { get; set; }
         public string UserId { get; set; }
 
-        [StringLength(20)]
-        public string? PathToProperty { get; set; }
-
         public string Title { get; set; }
         [StringLength(40)]
         public string Location { get; set; }

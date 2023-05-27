@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PracticeProject.Data;
 
@@ -11,9 +12,11 @@ using PracticeProject.Data;
 namespace PracticeProject.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    partial class ProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230527134641_Seed4")]
+    partial class Seed4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -249,8 +252,8 @@ namespace PracticeProject.Migrations
                     b.Property<int>("Area")
                         .HasColumnType("int");
 
-                    b.Property<string>("AreaDimension")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<short>("AreaDimension")
+                        .HasColumnType("smallint");
 
                     b.Property<string>("TypeOfLand")
                         .HasColumnType("nvarchar(max)");
