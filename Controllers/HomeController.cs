@@ -23,8 +23,10 @@ namespace PracticeProject.Controllers
         [HttpGet]
         public IActionResult Index(int page = 1)
         {
-            return View(_context.Adverts.Include(advert => advert.Photos).Where(advert => advert.IsActive == true)
-                .Skip((page - 1) * _MAX_PAGE_COUNT).Take(_MAX_PAGE_COUNT).ToList());
+            var adverts = _context.Adverts.Include(advert => advert.Photos)
+                .Where(advert => advert.IsActive == true).ToList();
+            ViewBag.AdvertCount = adverts.Count;
+            return View(adverts.Skip((page - 1) * _MAX_PAGE_COUNT).Take(_MAX_PAGE_COUNT).ToList());
         }
         [HttpPost]
         public IActionResult Index(string? searchType, string? inputDescription, string? inputLocation,

@@ -1,6 +1,7 @@
 ﻿@model List<PracticeProject.Data.Entities.Advert>;
 @{
     ViewData["Title"] = "Home Page";
+    
 }
 
 <!-- Search Forms for two types of property-->
@@ -165,7 +166,7 @@
     <div class="col-md-auto">
         <nav>
             <ul class="pagination">
-                @for (int i = 1; i <= Math.Ceiling(Model.Count / 5.0); i++)
+                @for (int i = 1; i <= Math.Ceiling(ViewBag.AdvertCount / 5.0); i++)
                 {
                     <li class="page-item">
                         <a class="page-link" asp-action="Index"  asp-route-page="@i">@i</a>
