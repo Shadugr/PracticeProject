@@ -6,7 +6,6 @@
 <div class="row justify-content-center">
 
     <div class="col-10 border">
-
         <!-- User Info-->
         @if (User.Identity.IsAuthenticated || User.Identity.Name == Model.Email)
         {
@@ -15,12 +14,14 @@
                     <h6>Hi, @Model.Name @Model.Surname</h6>
                 </div>
                 <div class="col-3">
-                    <a asp-action="ProfileSettings" asp-route-id="@Model.Id" class="btn btn-secondary" role="button">Profile Settings</a>
+                    <a asp-action="ProfileSettings" asp-route-id="@Model.Id" class="btn btn-info" role="button">Profile Settings</a>
                 </div>
                 <div class="col-3">
-                    <a href="#" class="btn btn-secondary" role="button">Property create</a>
+                    <a href="/User/FlatCreate" class="btn btn-secondary" role="button">Flat create</a>
                 </div>
-
+                <div class="col-3">
+                    <a href="/User/LandCreate" class="btn btn-secondary" role="button">Land create</a>
+                </div>
             </div>
         }
         <!-- End User Info-->
@@ -40,31 +41,46 @@
                 <!-- Custom content-->
                 @foreach (var advert in Model.Adverts)
                 {
-                    <div class="row flex-lg-row p-3">
-                        <div class="col-4">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHW3aOemXDA_ZS9PsVxRXomGYw70-c4UocJyC1EO5wXw&ss" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                        </div>
-                        <div class="col-5">
-                            <div class="media-body order-2 order-lg-1">
-                                <a class="mt-0 mb-2" asp-controller="Home" asp-action="FlatView" asp-route-id="@advert.Id">@advert.Title</a>
-                                <p class="font-italic text-muted mb-0 small">@advert.Description</p>
-                                <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <h6 class="font-weight-bold my-2">$@advert.Price</h6>
+                    if (advert.IsActive || (!advert.IsActive && 
+                    (User.Identity.IsAuthenticated || User.Identity.Name == Model.Email)))
+                    {
+                        <div class="row flex-lg-row p-3">
+                            <div class="col-4">
+                                <img src="~/@advert.Photos.First().PathToFile" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                            </div>
+                            <div class="col-5">
+                                <div class="media-body order-2 order-lg-1">
+                                    <a class="mt-0 mb-2" asp-controller="Home" asp-action="FlatView" asp-route-id="@advert.Id">@advert.Title</a>
+                                    <p class="font-italic text-muted mb-0 small">@advert.Description</p>
+                                    <div class="d-flex align-items-center justify-content-between mt-1">
+                                        <h6 class="font-weight-bold my-2">$@advert.Price</h6>
+                                    </div>
                                 </div>
                             </div>
+                            @if (User.Identity.IsAuthenticated || User.Identity.Name == Model.Email)
+                            {
+                                <div class="col-3 btn-group-vertical">
+                                    @if (advert.Flat is not null)
+                                    {
+                                        <a asp-action="FlatUpdate" asp-route-id="@advert.Id" class="btn btn-warning" role="button">Edit</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="LandUpdate" asp-route-id="@advert.Id" class="btn btn-warning" role="button">Edit</a>
+                                    }
+                                    @if (!advert.IsActive)
+                                    {
+                                        <a asp-action="ChangeAdvertActivation" asp-route-id="@advert.Id" data-toggle='collapse' id='adActivate' class='btn btn-primary'>Activate</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="ChangeAdvertActivation" asp-route-id="@advert.Id" data-toggle='collapse' id='adActivate' class='btn btn-secondary'>Deactivate</a>
+                                    }
+                                    <a asp-action="DeleteAdvert" asp-route-id="@advert.Id" class="btn btn-outline-danger" role="button">Delete</a>
+                                </div>
+                            }
                         </div>
-                        @if (User.Identity.IsAuthenticated || User.Identity.Name == Model.Email)
-                        {
-                            <div class="col-3">
-                                <a href="#" class="btn btn-secondary m-1" role="button">Edit</a>
-                                <div class="w-100"></div>
-                                <a href="#" class="btn btn-primary m-1" role="button">Activate</a>
-                                <a href="#" class="btn btn-secondary m-1" role="button">Deactivate</a>
-                                <div class="w-100"></div>
-                                <a href="#" class="btn btn-danger m-1" role="button">Delete</a>
-                            </div>
-                        }
-                    </div>
+                    }
                 }
             </li>
             <!-- End -->

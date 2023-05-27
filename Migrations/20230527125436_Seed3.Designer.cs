@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PracticeProject.Data;
 
@@ -11,9 +12,11 @@ using PracticeProject.Data;
 namespace PracticeProject.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    partial class ProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230527125436_Seed3")]
+    partial class Seed3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -202,6 +205,44 @@ namespace PracticeProject.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Adverts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 5, 27, 15, 54, 35, 872, DateTimeKind.Local).AddTicks(9102),
+                            Description = "description1",
+                            IsActive = true,
+                            Location = "location1",
+                            Price = 100000,
+                            Title = "title1",
+                            UserId = "1",
+                            ViewNumber = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 5, 27, 15, 54, 35, 872, DateTimeKind.Local).AddTicks(9107),
+                            Description = "description2",
+                            IsActive = true,
+                            Location = "location2",
+                            Price = 200000,
+                            Title = "title2",
+                            UserId = "1",
+                            ViewNumber = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2023, 5, 27, 15, 54, 35, 872, DateTimeKind.Local).AddTicks(9112),
+                            Description = "description3",
+                            IsActive = true,
+                            Location = "location3",
+                            Price = 300000,
+                            Title = "title3",
+                            UserId = "2",
+                            ViewNumber = 1
+                        });
                 });
 
             modelBuilder.Entity("PracticeProject.Data.Entities.Flat", b =>
@@ -233,6 +274,26 @@ namespace PracticeProject.Migrations
                         .IsUnique();
 
                     b.ToTable("Flats");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AdvertId = 1,
+                            BuildingAge = 5,
+                            Floor = 1,
+                            Square = 50,
+                            Storey = 5
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AdvertId = 2,
+                            BuildingAge = 5,
+                            Floor = 2,
+                            Square = 30,
+                            Storey = 5
+                        });
                 });
 
             modelBuilder.Entity("PracticeProject.Data.Entities.Land", b =>
@@ -249,8 +310,8 @@ namespace PracticeProject.Migrations
                     b.Property<int>("Area")
                         .HasColumnType("int");
 
-                    b.Property<string>("AreaDimension")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<short>("AreaDimension")
+                        .HasColumnType("smallint");
 
                     b.Property<string>("TypeOfLand")
                         .HasColumnType("nvarchar(max)");
@@ -261,6 +322,16 @@ namespace PracticeProject.Migrations
                         .IsUnique();
 
                     b.ToTable("Lands");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AdvertId = 3,
+                            Area = 100,
+                            AreaDimension = (short)100,
+                            TypeOfLand = "type1"
+                        });
                 });
 
             modelBuilder.Entity("PracticeProject.Data.Entities.Photo", b =>
@@ -282,6 +353,26 @@ namespace PracticeProject.Migrations
                     b.HasIndex("AdvertId");
 
                     b.ToTable("Photos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AdvertId = 1,
+                            PathToFile = "path1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AdvertId = 2,
+                            PathToFile = "path1"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AdvertId = 3,
+                            PathToFile = "path1"
+                        });
                 });
 
             modelBuilder.Entity("PracticeProject.Data.Entities.User", b =>
@@ -361,6 +452,42 @@ namespace PracticeProject.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "714171e5-3745-458c-8f44-8e79336af3a5",
+                            CreatedAt = new DateTime(2023, 5, 27, 15, 54, 35, 872, DateTimeKind.Local).AddTicks(9000),
+                            Email = "user1@gmail.com",
+                            EmailConfirmed = false,
+                            IsActive = true,
+                            LockoutEnabled = false,
+                            Name = "test",
+                            PhoneNumber = "380123456789",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "fb64b289-6062-40c4-9b74-0fda42368374",
+                            Surname = "user1",
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bd254aab-c411-45b4-9f8a-41fb0d3465bc",
+                            CreatedAt = new DateTime(2023, 5, 27, 15, 54, 35, 872, DateTimeKind.Local).AddTicks(9091),
+                            Email = "user2@gmail.com",
+                            EmailConfirmed = false,
+                            IsActive = true,
+                            LockoutEnabled = false,
+                            Name = "test",
+                            PhoneNumber = "380987654321",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "c614d5df-187a-4af7-af95-cedc8758f5e0",
+                            Surname = "user2",
+                            TwoFactorEnabled = false
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

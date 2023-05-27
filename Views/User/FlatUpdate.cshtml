@@ -1,30 +1,32 @@
-﻿@{
-    ViewData["Title"] = "Flat Create";
+﻿@model PracticeProject.Data.Entities.Advert;
+@{
+    ViewData["Title"] = "Update Create";
 }
 
 <div class="row justify-content-center">
     <div class="col-6">
-        <form asp-action="FlatCreate" method="post" enctype="multipart/form-data">
+        <form asp-action="FlatUpdate" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="inputId" value="@Model.Id" />
             <div class="row">
 
                 <div class="col-12">
                     <div class="form-group">
                         <label for="inputTitle">Title</label>
-                        <input required type="text" class="form-control" name="inputTitle" id="inputTitle" placeholder="Title">
+                        <input required type="text" class="form-control" name="inputTitle" id="inputTitle" value="@Model.Title" placeholder="Title">
                     </div>
                 </div>
 
                 <div class="col-12">
                     <div class="form-group">
                         <label for="inputTitle">Location</label>
-                        <input required type="text" class="form-control" name="inputLocation" id="inputLocation" placeholder="Location">
+                        <input required type="text" class="form-control" name="inputLocation" id="inputLocation" value="@Model.Location" placeholder="Location">
                     </div>
                 </div>
 
                 <div class="col-12">
                     <div class="form-group">
                         <label for="inputMultipleImages">Upload images</label>
-                        <input required class="form-control" type="file" name="inputMultipleImages" id="inputMultipleImages" accept="image/*" multiple />
+                        <input class="form-control" type="file" name="inputMultipleImages" id="inputMultipleImages" accept="image/*" multiple />
                         <output></output>
                     </div>
                 </div>
@@ -32,43 +34,43 @@
                 <div class="col-4">
                     <div class="form-group">
                         <label for="inputFloor">Floor</label>
-                        <input required type="text" pattern="[0-9]+" class="form-control" name="inputFloor" id="inputFloor" placeholder="Floor">
+                        <input required type="text" pattern="[0-9]+" class="form-control" name="inputFloor" id="inputFloor" value="@Model.Flat.Floor" placeholder="Floor">
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
                         <label for="inputStorey">Storey</label>
-                        <input required type="text" pattern="[0-9]+" class="form-control" name="inputStorey" id="inputStorey" placeholder="Storey">
+                        <input required type="text" pattern="[0-9]+" class="form-control" name="inputStorey" id="inputStorey" value="@Model.Flat.Storey" placeholder="Storey">
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
                         <label for="inputSquare">Square</label>
-                        <input required type="text" pattern="[0-9]+" class="form-control" name="inputSquare" id="inputSquare" placeholder="Square">
+                        <input required type="text" pattern="[0-9]+" class="form-control" name="inputSquare" id="inputSquare" value="@Model.Flat.Square" placeholder="Square">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
                         <label for="inputBuildAge">Building age</label>
-                        <input required type="text" pattern="[0-9]+" class="form-control" name="inputBuildAge" id="inputBuildAge" placeholder="Building age">
+                        <input required type="text" pattern="[0-9]+" class="form-control" name="inputBuildAge" id="inputBuildAge" value="@Model.Flat.BuildingAge" placeholder="Building age">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
                         <label for="inputPrice">Price</label>
-                        <input required type="text" pattern="[0-9]+" class="form-control" name="inputPrice" id="inputPrice" placeholder="Price">
+                        <input required type="text" pattern="[0-9]+" class="form-control" name="inputPrice" id="inputPrice" value="@Model.Price" placeholder="Price">
                     </div>
                 </div>
 
                 <div class="col-12">
                     <div class="form-group">
                         <label for="inputDescription">Description</label>
-                        <textarea required class="form-control" name="inputDescription" rows="5" id="inputDescription"></textarea>
+                        <textarea required class="form-control" name="inputDescription" rows="5" id="inputDescription">@Model.Description</textarea>
                     </div>
                 </div>
 
                 <div class="col-12 mt-2 form-group">
-                    <button type="submit" class="btn btn-primary">Create Flat</button>
+                    <button type="submit" class="btn btn-primary">Update Flat</button>
                 </div>
             </div>
 
