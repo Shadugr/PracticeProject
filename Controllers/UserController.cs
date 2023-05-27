@@ -23,5 +23,15 @@ namespace PracticeProject.Controllers
         {
             return View();
         }
+
+        public IActionResult FlatUpdate()
+        {
+            return View();
+        }
+
+        public IActionResult LandUpdate()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,85 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<div class="row justify-content-center">
+    <div class="col-6">
+        <form>
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="inputTitle">Title</label>
+                        <input type="text" class="form-control" id="inputTitle" placeholder="Title">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="inputTitle">Location</label>
+                        <input type="text" class="form-control" id="inputLocation" placeholder="Location">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="inputMultipleImages">Upload images</label>
+                        <input class="form-control" type="file" id="inputMultipleImages" accept="image/*" multiple />
+                        <output></output>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Type of land</label>
+                        <select class="form-select" id="typeOfLand">
+                            <option value="0" selected>01.03</option>
+                            <option value="1">01.05</option>
+                            <option value="2">02.01</option>
+                            <option value="3">03.10</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="inputArea">Area</label>
+                        <input type="text" class="form-control" id="inputArea" placeholder="Area">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Dimention</label>
+                        <select class="form-select" id="areaDimention">
+                            <option value="0" selected>sq.m</option>
+                            <option value="1">sq.ft</option>
+                            <option value="2">ha</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="inputPrice">Price</label>
+                        <input type="text" class="form-control" id="inputPrice" placeholder="Price">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="inputDescription">Description</label>
+                        <textarea class="form-control" rows="5" id="inputDescription"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-12 mt-2 form-group">
+                    <button type="submit" class="btn btn-primary">Create Land</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
