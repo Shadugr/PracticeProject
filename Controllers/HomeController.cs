@@ -38,7 +38,7 @@ namespace PracticeProject.Controllers
 
             if (searchType == "Flat")
             {
-                searchAdvert = _context.Adverts.Include(advert => advert.Flat).ToList();
+                searchAdvert = _context.Adverts.Include(advert => advert.Photos).Include(advert => advert.Flat).ToList();
                 if (!string.IsNullOrEmpty(inputDescription))
                     searchAdvert = searchAdvert.Where(advert => advert.Description.Contains(inputDescription)).ToList();
                 if (!string.IsNullOrEmpty(inputLocation))
@@ -58,7 +58,7 @@ namespace PracticeProject.Controllers
             }
             else if (searchType == "Land")
             {
-                searchAdvert = _context.Adverts.Include(advert => advert.Land).ToList();
+                searchAdvert = _context.Adverts.Include(advert => advert.Photos).Include(advert => advert.Land).ToList();
                 if (!string.IsNullOrEmpty(inputDescription))
                     searchAdvert = searchAdvert.Where(advert => advert.Description.Contains(inputDescription)).ToList();
                 if (!string.IsNullOrEmpty(inputLocation))
@@ -80,6 +80,7 @@ namespace PracticeProject.Controllers
             if (searchAdvert is null)
                 return View(_context.Adverts.Include(advert => advert.Photos).Where(advert => advert.IsActive == true)
                     .Take(_MAX_PAGE_COUNT).ToList());
+            ViewBag.AdvertCount = searchAdvert.Count;
             return View(searchAdvert);
         }
 
